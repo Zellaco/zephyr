@@ -162,7 +162,7 @@ static bool is_rodata(const void *addr)
 {
 #if defined(CONFIG_ARM) || defined(CONFIG_ARC) || defined(CONFIG_X86) || \
 	defined(CONFIG_ARM64) || defined(CONFIG_NIOS2) || \
-	defined(CONFIG_RISCV) || defined(CONFIG_SPARC)
+	defined(CONFIG_RISCV) || defined(CONFIG_SPARC) || defined(CONFIG_MIPS)
 	extern const char *__rodata_region_start[];
 	extern const char *__rodata_region_end[];
 	#define RO_START __rodata_region_start
@@ -847,10 +847,12 @@ uint32_t z_vrfy_log_buffered_cnt(void)
 #include <syscalls/log_buffered_cnt_mrsh.c>
 #endif
 
-void z_log_dropped(void)
+void z_log_dropped(bool buffered)
 {
 	atomic_inc(&dropped_cnt);
-	atomic_dec(&buffered_cnt);
+	if (buffered) {
+		atomic_dec(&buffered_cnt);
+	}
 }
 
 uint32_t z_log_dropped_read_and_clear(void)
@@ -869,7 +871,7 @@ static void notify_drop(const struct mpsc_pbuf_buffer *buffer,
 	ARG_UNUSED(buffer);
 	ARG_UNUSED(item);
 
-	z_log_dropped();
+	z_log_dropped(true);
 }
 
 

@@ -96,11 +96,13 @@ enum can_mode {
  * @brief Defines the state of the CAN bus
  */
 enum can_state {
-	/** Error-active state. */
+	/** Error-active state (RX/TX error count < 96). */
 	CAN_ERROR_ACTIVE,
-	/** Error-passive state. */
+	/** Error-warning state (RX/TX error count < 128). */
+	CAN_ERROR_WARNING,
+	/** Error-passive state (RX/TX error count < 256). */
 	CAN_ERROR_PASSIVE,
-	/** Bus-off state. */
+	/** Bus-off state (RX/TX error count >= 256). */
 	CAN_BUS_OFF,
 	/** Bus state unknown. */
 	CAN_BUS_UNKNOWN
@@ -889,7 +891,7 @@ static inline void can_set_state_change_callback(const struct device *dev,
 {
 	const struct can_driver_api *api = (const struct can_driver_api *)dev->api;
 
-	return api->set_state_change_callback(dev, callback, user_data);
+	api->set_state_change_callback(dev, callback, user_data);
 }
 
 /** @} */

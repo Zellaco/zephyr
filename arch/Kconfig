@@ -48,6 +48,13 @@ config ARM64
 	select USE_SWITCH_SUPPORTED
 	help
 	  ARM64 (AArch64) architecture
+	  
+config AURIX
+	bool
+	select ARCH_IS_SET
+	select HAS_DTS
+	help
+		Aurix architecture
 
 config MIPS
 	bool

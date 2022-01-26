@@ -1,0 +1,3 @@
+config BOARD_KIT_A2G_TC397XA_3V3_TFT
+	bool "Infineon devkit (TC397XA)"
+	depends on SOC_TC397XA

@@ -1,0 +1,2 @@
+config SOC
+	default "TC397XA"

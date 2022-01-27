@@ -31,6 +31,8 @@
 #include <arch/posix/arch.h>
 #elif defined(CONFIG_SPARC)
 #include <arch/sparc/arch.h>
+#elif defined(CONFIG_AURIX)
+#include <arch/aurix/arch.h>
 #else
 #error "Unknown Architecture"
 #endif

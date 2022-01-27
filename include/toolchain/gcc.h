@@ -512,6 +512,10 @@ do {                                                                    \
 	__asm__(".globl\t" #name                    \
 		"\n\t.equ\t" #name "," #value       \
 		"\n\t.type\t" #name ",#object")
+#elif defined(CONFIG_AURIX)
+#define GEN_ABSOLUTE_SYM(name, value)
+
+#define GEN_ABSOLUTE_SYM_KCONFIG(name, value)
 
 #else
 #error processor architecture not supported

@@ -1,0 +1,2 @@
+config BOARD
+     	default "KIT_A2G_TC397XA_3V3_TFT"

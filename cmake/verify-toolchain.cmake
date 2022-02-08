@@ -48,6 +48,8 @@ endif()
 if(("zephyr" STREQUAL ${ZEPHYR_TOOLCHAIN_VARIANT}) OR
    ((NOT DEFINED ZEPHYR_TOOLCHAIN_VARIANT) AND (${CMAKE_HOST_SYSTEM_NAME} STREQUAL Linux)) OR
    (DEFINED ZEPHYR_SDK_INSTALL_DIR))
+   
+   message(INFO "ZEPHYR???")
 
   # No toolchain was specified, so inform user that we will be searching.
   if (NOT DEFINED ZEPHYR_SDK_INSTALL_DIR AND
@@ -87,6 +89,8 @@ if(("zephyr" STREQUAL ${ZEPHYR_TOOLCHAIN_VARIANT}) OR
 endif()
 
 if(NOT DEFINED ZEPHYR_TOOLCHAIN_VARIANT)
+	
+	message(INFO "ZEPHYR NOT DEFINED")
   if (NOT Zephyr-sdk_CONSIDERED_VERSIONS)
     set(error_msg "ZEPHYR_TOOLCHAIN_VARIANT not specified and no Zephyr SDK is installed.\n")
     string(APPEND error_msg "Please set ZEPHYR_TOOLCHAIN_VARIANT to the toolchain to use or install the Zephyr SDK.")
@@ -117,6 +121,7 @@ https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${TOOLCHAIN_ZEPH
 endif()
 
 if(DEFINED ZEPHYR_SDK_INSTALL_DIR)
+  message(INFO "ZEPHYR SDK INSTALL DIR")
   # Cache the Zephyr SDK install dir.
   set(ZEPHYR_SDK_INSTALL_DIR ${ZEPHYR_SDK_INSTALL_DIR} CACHE PATH "Zephyr SDK install directory")
   # Use the Zephyr SDK host-tools.
@@ -124,6 +129,8 @@ if(DEFINED ZEPHYR_SDK_INSTALL_DIR)
 endif()
 
 if(CMAKE_SCRIPT_MODE_FILE)
+
+  message(INFO "CMAKE_SCRIPT_MODE_FILE")
   if("${FORMAT}" STREQUAL "json")
     set(json "{\"ZEPHYR_TOOLCHAIN_VARIANT\" : \"${ZEPHYR_TOOLCHAIN_VARIANT}\", ")
     string(APPEND json "\"SDK_VERSION\": \"${SDK_VERSION}\", ")

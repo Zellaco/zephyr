@@ -53,6 +53,8 @@ elseif("${ARCH}" STREQUAL "arc")
   list(APPEND TOOLCHAIN_C_FLAGS
     -mcpu=${GCC_M_CPU}
     )
+elseif("${ARCH}" STREQUAL "aurix")
+  include(${CMAKE_CURRENT_LIST_DIR}/target_aurix.cmake)
 elseif("${ARCH}" STREQUAL "riscv")
   include(${CMAKE_CURRENT_LIST_DIR}/target_riscv.cmake)
 elseif("${ARCH}" STREQUAL "x86")
@@ -61,8 +63,10 @@ elseif("${ARCH}" STREQUAL "sparc")
   include(${CMAKE_CURRENT_LIST_DIR}/target_sparc.cmake)
 elseif("${ARCH}" STREQUAL "mips")
   include(${CMAKE_CURRENT_LIST_DIR}/target_mips.cmake)
+else()
+  message(ERROR 'no target compiler defined')
 endif()
-
+#message(INFO '${ARCH}')
 # This libgcc code is partially duplicated in compiler/*/target.cmake
 execute_process(
   COMMAND ${CMAKE_C_COMPILER} ${TOOLCHAIN_C_FLAGS} --print-libgcc-file-name

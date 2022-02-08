@@ -1024,7 +1024,7 @@ function(zephyr_check_compiler_flag lang option check)
     set(check ${check} PARENT_SCOPE)
     return()
   endif()
-
+  
   # Locate the cache directory
   set_ifndef(
     ZEPHYR_TOOLCHAIN_CAPABILITY_CACHE_DIR
@@ -1054,10 +1054,13 @@ function(zephyr_check_compiler_flag lang option check)
   set(key_string "${key_string}${CMAKE_REQUIRED_FLAGS}_")
 
   string(MD5 key ${key_string})
-
+message(INFO 'hello1')
   # Check the cache
   set(key_path ${ZEPHYR_TOOLCHAIN_CAPABILITY_CACHE_DIR}/${key})
+  message(INFO '${key}')
+  message(INFO '${ZEPHYR_TOOLCHAIN_CAPABILITY_CACHE_DIR}')
   if(EXISTS ${key_path})
+  
     file(READ
     ${key_path}   # File to be read
     key_value     # Output variable
@@ -1065,9 +1068,12 @@ function(zephyr_check_compiler_flag lang option check)
     )
 
     set(${check} ${key_value} PARENT_SCOPE)
+	
+	 message(INFO '${check}')
+	 message(INFO '${key_value}')
     return()
   endif()
-
+message(INFO 'hello2')
   # Flags that start with -Wno-<warning> can not be tested by
   # check_compiler_flag, they will always pass, but -W<warning> can be
   # tested, so to test -Wno-<warning> flags we test -W<warning>
@@ -1078,7 +1084,11 @@ function(zephyr_check_compiler_flag lang option check)
     set(possibly_translated_option ${option})
   endif()
 
+  message(INFO '${lang}')
+  message(INFO '${possibly_translated_option}')
+  
   check_compiler_flag(${lang} "${possibly_translated_option}" inner_check)
+
 
   set(${check} ${inner_check} PARENT_SCOPE)
 
@@ -1125,6 +1135,9 @@ function(zephyr_check_compiler_flag_hardcoded lang option check exists)
   # Various flags that are not supported for CXX may not be testable
   # because they would produce a warning instead of an error during
   # the test.  Exclude them by toolchain-specific blocklist.
+  message(INFO '${lang}')
+  message(INFO '${option}')
+  
   if((${lang} STREQUAL CXX) AND ("${option}" IN_LIST CXX_EXCLUDED_OPTIONS))
     set(check 0 PARENT_SCOPE)
     set(exists 1 PARENT_SCOPE)

@@ -605,6 +605,7 @@ enable_language(C CXX ASM)
 # Verify that the toolchain can compile a dummy file, if it is not we
 # won't be able to test for compatibility with certain C flags.
 zephyr_check_compiler_flag(C "" toolchain_is_ok)
+#assert(0 "hello")
 assert(toolchain_is_ok "The toolchain is unable to build a dummy C file. See CMakeError.log.")
 
 include(${ZEPHYR_BASE}/cmake/target_toolchain_flags.cmake)

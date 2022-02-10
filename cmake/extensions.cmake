@@ -228,6 +228,7 @@ function(zephyr_get_system_include_directories_for_lang lang i)
   set(result_output_list "$<$<BOOL:${genexp_output_list}>:-isystem$<JOIN:${genexp_output_list},${args_DELIMITER}-isystem>>")
 
   set(${i} ${result_output_list} PARENT_SCOPE)
+#  message(INFO "iSystemDirs ${i}")
 endfunction()
 
 function(zephyr_get_compile_definitions_for_lang lang i)
@@ -1022,6 +1023,7 @@ function(zephyr_check_compiler_flag lang option check)
   zephyr_check_compiler_flag_hardcoded(${lang} "${option}" check exists)
   if(exists)
     set(check ${check} PARENT_SCOPE)
+#    message(INFO " 1 lang: ${lang} option: ${option} check: ${check}")
     return()
   endif()
   
@@ -1054,11 +1056,8 @@ function(zephyr_check_compiler_flag lang option check)
   set(key_string "${key_string}${CMAKE_REQUIRED_FLAGS}_")
 
   string(MD5 key ${key_string})
-message(INFO 'hello1')
   # Check the cache
   set(key_path ${ZEPHYR_TOOLCHAIN_CAPABILITY_CACHE_DIR}/${key})
-  message(INFO '${key}')
-  message(INFO '${ZEPHYR_TOOLCHAIN_CAPABILITY_CACHE_DIR}')
   if(EXISTS ${key_path})
   
     file(READ
@@ -1069,11 +1068,9 @@ message(INFO 'hello1')
 
     set(${check} ${key_value} PARENT_SCOPE)
 	
-	 message(INFO '${check}')
-	 message(INFO '${key_value}')
+#    message(INFO " 2 lang: ${lang} option: ${option} check: ${check}")
     return()
   endif()
-message(INFO 'hello2')
   # Flags that start with -Wno-<warning> can not be tested by
   # check_compiler_flag, they will always pass, but -W<warning> can be
   # tested, so to test -Wno-<warning> flags we test -W<warning>
@@ -1083,12 +1080,8 @@ message(INFO 'hello2')
   else()
     set(possibly_translated_option ${option})
   endif()
-
-  message(INFO '${lang}')
-  message(INFO '${possibly_translated_option}')
   
   check_compiler_flag(${lang} "${possibly_translated_option}" inner_check)
-
 
   set(${check} ${inner_check} PARENT_SCOPE)
 
@@ -1129,14 +1122,14 @@ message(INFO 'hello2')
       "${inner_check} ${key} ${key_string}\n"
       )
   endif()
-endfunction()
+#  message(INFO " 3 lang: ${lang} option: ${option} check: ${check}")
+
+  endfunction()
 
 function(zephyr_check_compiler_flag_hardcoded lang option check exists)
   # Various flags that are not supported for CXX may not be testable
   # because they would produce a warning instead of an error during
   # the test.  Exclude them by toolchain-specific blocklist.
-  message(INFO '${lang}')
-  message(INFO '${option}')
   
   if((${lang} STREQUAL CXX) AND ("${option}" IN_LIST CXX_EXCLUDED_OPTIONS))
     set(check 0 PARENT_SCOPE)

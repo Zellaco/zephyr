@@ -66,7 +66,7 @@ elseif("${ARCH}" STREQUAL "mips")
 else()
   message(ERROR 'no target compiler defined')
 endif()
-#message(INFO '${ARCH}')
+
 # This libgcc code is partially duplicated in compiler/*/target.cmake
 execute_process(
   COMMAND ${CMAKE_C_COMPILER} ${TOOLCHAIN_C_FLAGS} --print-libgcc-file-name
@@ -103,6 +103,7 @@ endif()
 # wrap with target_cc_option() in extentions.cmake)
 foreach(isystem_include_dir ${NOSTDINC})
   list(APPEND isystem_include_flags -isystem "\"${isystem_include_dir}\"")
+#  message(INFO " stddir ${isystem_include_dir}")
 endforeach()
 
 # The CMAKE_REQUIRED_FLAGS variable is used by check_c_compiler_flag()

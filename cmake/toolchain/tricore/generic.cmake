@@ -20,6 +20,7 @@ set(CROSS_COMPILE ${TOOLCHAIN_HOME}/bin/${CROSS_COMPILE_TARGET}-)
 set(SYSROOT_DIR   ${TOOLCHAIN_HOME}/${SYSROOT_TARGET})
 set(TOOLCHAIN_HAS_NEWLIB ON CACHE BOOL "True if toolchain supports newlib")
 
-
+# To avoid trying to compile to an exe file
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 message(STATUS "Found toolchain: TRICORE (${TRICORE_TOOLCHAIN_PATH})")

@@ -5,8 +5,7 @@
 #include <arch/common/ffs.h>
 #include <arch/common/sys_bitops.h>
 #include <devicetree.h>
-/* Not sure about value.
-*/
+
 #define ARCH_STACK_PTR_ALIGN  0//TODO: Define correctly
 
 typedef struct __esf z_arch_esf_t;

@@ -27,9 +27,9 @@ macro(toolchain_ld_baremetal)
   # without any warnings or errors, which is the default behavior.
   # So there is no need to explicitly set a linker flag.
   if(CONFIG_LINKER_ORPHAN_SECTION_WARN)
-    zephyr_ld_options(
-      ${LINKERFLAGPREFIX},--orphan-handling=warn
-    )
+    #zephyr_ld_options(
+    #  ${LINKERFLAGPREFIX},--orphan-handling=warn
+    #)
   elseif(CONFIG_LINKER_ORPHAN_SECTION_ERROR)
     zephyr_ld_options(
       ${LINKERFLAGPREFIX},--orphan-handling=error

@@ -108,4 +108,4 @@ INT_FLASH_MEMORY_SIZE = 16M;
  * INCLUDE OF APPLICATION LINKER FILE
  * ==============================================================================================*/
  
-INCLUDE tc39x_bsp_example.ld
+INCLUDE C:\Users\nosna\zephyrproject\zephyr\soc\aurix\TC397XA\tc39x_bsp_example.ld

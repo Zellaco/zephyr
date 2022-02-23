@@ -6,7 +6,8 @@
 #include <arch/common/sys_bitops.h>
 #include <devicetree.h>
 
-#define ARCH_STACK_PTR_ALIGN  0//TODO: Define correctly
+#define ARCH_STACK_PTR_ALIGN 16//TODO: Define correctly
+
 
 typedef struct __esf z_arch_esf_t;
 
@@ -40,3 +41,4 @@ static ALWAYS_INLINE void arch_nop(void)
 {
 	//TODO: Define correctly
 }
+

@@ -1,5 +1,6 @@
+#include <kernel.h>
+#include <kernel_arch_data.h>
 #include <gen_offset.h>
+#include <kernel_offsets.h>
 
-//#include "offsets_aarch32.c"
-
-//GEN_ABS_SYM_END
+GEN_ABS_SYM_END

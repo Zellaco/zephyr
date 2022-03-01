@@ -89,6 +89,10 @@
 
   #elif defined(CONFIG_SPARC)
 
+    #define PERFOPT_ALIGN .align  4  
+	
+  #elif defined(CONFIG_AURIX)
+
     #define PERFOPT_ALIGN .align  4
 
   #else

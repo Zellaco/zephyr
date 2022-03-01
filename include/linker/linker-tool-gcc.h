@@ -57,6 +57,8 @@
 	/* Not needed */
 #elif defined(CONFIG_SPARC)
 	OUTPUT_FORMAT("elf32-sparc")
+#elif defined(CONFIG_AURIX)
+	/* Not needed */
 #else
 	#error Arch not supported.
 #endif

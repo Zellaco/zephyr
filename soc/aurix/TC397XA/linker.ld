@@ -26,6 +26,15 @@
  * license agreement with HighTec EDV-Systeme GmbH. Please contact for
  * detailed license information: info@hightec-rt.com.
  *************************************************************************************************/
+
+#include <autoconf.h>
+#include <linker/sections.h>
+#include <devicetree.h>
+
+#include <linker/devicetree_regions.h>
+#include <linker/linker-defs.h>
+#include <linker/linker-tool.h>
+
  
 OUTPUT_FORMAT("elf32-tricore")
 OUTPUT_ARCH(tricore)
@@ -107,5 +116,6 @@ INT_FLASH_MEMORY_SIZE = 16M;
 /* ================================================================================================
  * INCLUDE OF APPLICATION LINKER FILE
  * ==============================================================================================*/
- 
+
 INCLUDE C:\Users\nosna\zephyrproject\zephyr\soc\aurix\TC397XA\tc39x_bsp_example.ld
+

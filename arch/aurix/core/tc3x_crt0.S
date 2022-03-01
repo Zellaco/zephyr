@@ -182,6 +182,8 @@ _crt0_reset:
  * ==============================================================================================*/
 
    .section .text, "ax"
+_DEVICE_STRUCT_SIZEOF: and     %d15, 7
+_DEVICE_STRUCT_HANDLES_OFFSET: and     %d15, 7
 
 _start:
 

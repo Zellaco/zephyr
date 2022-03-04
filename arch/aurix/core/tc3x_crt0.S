@@ -182,9 +182,9 @@ _crt0_reset:
  * ==============================================================================================*/
 
    .section .text, "ax"
-_DEVICE_STRUCT_SIZEOF: and     %d15, 7
+/*_DEVICE_STRUCT_SIZEOF: and     %d15, 7
 _DEVICE_STRUCT_HANDLES_OFFSET: and     %d15, 7
-
+*/
 _start:
 
 /* ------------------------------------------------------------------------------------------------
@@ -374,7 +374,7 @@ loop_csa:
  * shall do here
  * ----------------------------------------------------------------------------------------------*/
 
-    call    main
+    call    z_cstart
 
 _exit:
     debug  /* debug stop in case of active debugging process,

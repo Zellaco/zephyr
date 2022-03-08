@@ -374,7 +374,7 @@ loop_csa:
  * shall do here
  * ----------------------------------------------------------------------------------------------*/
 
-    call    z_cstart
+   call    z_cstart
 
 _exit:
     debug  /* debug stop in case of active debugging process,

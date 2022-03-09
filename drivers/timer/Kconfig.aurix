@@ -18,4 +18,4 @@ config AURIX_TIMER_ID
 	depends on AURIX_TIMER
 	help
 	  Index of the CCOMPARE register (and associated interrupt)
-	  used for the system timer.
+	  used for the system timer.  

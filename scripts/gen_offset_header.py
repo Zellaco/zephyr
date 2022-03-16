@@ -37,7 +37,8 @@ def gen_offset_header(input_name, input_file, output_file):
 
 #ifndef %s
 #define %s\n\n""" % (include_guard, include_guard))
-
+    print('ELFFile:'+str(input_file))
+	#print('kek'
     obj = ELFFile(input_file)
     for sym in get_symbol_table(obj).iter_symbols():
         if isinstance(sym.name, bytes):

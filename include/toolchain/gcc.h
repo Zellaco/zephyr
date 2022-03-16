@@ -296,7 +296,7 @@ do {                                                                    \
 
 #if defined(CONFIG_ARM) || defined(CONFIG_NIOS2) || defined(CONFIG_RISCV) \
 	|| defined(CONFIG_XTENSA) || defined(CONFIG_ARM64) \
-	|| defined(CONFIG_MIPS)
+	|| defined(CONFIG_MIPS) || defined(CONFIG_AURIX)
 #define GTEXT(sym) .global sym; .type sym, %function
 #define GDATA(sym) .global sym; .type sym, %object
 #define WTEXT(sym) .weak sym; .type sym, %function
@@ -513,9 +513,15 @@ do {                                                                    \
 		"\n\t.equ\t" #name "," #value       \
 		"\n\t.type\t" #name ",#object")
 #elif defined(CONFIG_AURIX)
-#define GEN_ABSOLUTE_SYM(name, value)
+#define GEN_ABSOLUTE_SYM(name, value)			\
+	__asm__(".globl\t" #name "\n\t.equ\t" #name \
+		",%0"                              \
+		"\n\t.type\t" #name ",%%object" :  : "n"(value))
 
-#define GEN_ABSOLUTE_SYM_KCONFIG(name, value)
+#define GEN_ABSOLUTE_SYM_KCONFIG(name, value)       \
+	__asm__(".globl\t" #name                    \
+		"\n\t.equ\t" #name "," #value       \
+		"\n\t.type\t" #name ",%object")
 
 #else
 #error processor architecture not supported

@@ -124,6 +124,7 @@
 			       "." STRINGIFY(__COUNTER__) \
 			       "." STRINGIFY(name))))
 
+
 #ifndef __GCC_LINKER_CMD__
 /*#include <xtensa/config/core.h>
 */

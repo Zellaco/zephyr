@@ -17,6 +17,7 @@
 #include <kernel_structs.h>
 #include <ksched.h>
 #include <wait_q.h>
+#include <arch/cpu.h>
 
 /* Note that in this arch we cheat quite a bit: we use as stack a normal
  * pthreads stack and therefore we ignore the stack size

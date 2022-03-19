@@ -12,8 +12,8 @@
  * other definitions for the RISCV processor architecture.
  */
 
-#ifndef ZEPHYR_ARCH_RISCV_INCLUDE_KERNEL_ARCH_DATA_H_
-#define ZEPHYR_ARCH_RISCV_INCLUDE_KERNEL_ARCH_DATA_H_
+#ifndef ZEPHYR_ARCH_AURIX_INCLUDE_KERNEL_ARCH_DATA_H_
+#define ZEPHYR_ARCH_AURIX_INCLUDE_KERNEL_ARCH_DATA_H_
 
 #include <toolchain.h>
 #include <linker/sections.h>
@@ -24,10 +24,15 @@
 #include <zephyr/types.h>
 #include <sys/util.h>
 #include <sys/dlist.h>
+#include <sys/atomic.h> 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+typedef struct __esf _esf_t;
+typedef struct __basic_sf _basic_sf_t;
+
 
 #ifdef __cplusplus
 }
@@ -35,4 +40,4 @@ extern "C" {
 
 #endif /* _ASMLANGUAGE */
 
-#endif /* ZEPHYR_ARCH_RISCV_INCLUDE_KERNEL_ARCH_DATA_H_ */
+#endif /* ZEPHYR_ARCH_AURIX_INCLUDE_KERNEL_ARCH_DATA_H_ */

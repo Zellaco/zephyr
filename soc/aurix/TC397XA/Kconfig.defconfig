@@ -4,5 +4,5 @@ config SOC
 config AURIX_TIMER
 	default y
 	
-config SERIAL_AURIX
+config SERIAL_TEST
 	default y

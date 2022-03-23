@@ -1,0 +1,6 @@
+compatible: "infinein,aurix-sample-controller"
+
+properties:
+  num-aurixs:
+    type: int
+    required: true

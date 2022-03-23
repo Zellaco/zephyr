@@ -1,2 +1,16 @@
 /dts-v1/;
 #include <aurix/TC397XA.dtsi>
+
+/ {
+	model = "Aurix-controller";
+	compatible = "aurix_controller";
+
+	chosen {
+		zephyr,sram = &sram0;
+	};
+	
+	aurix-sample-controller {
+     compatible = "infineon,aurix-sample-controller";
+	};
+};
+

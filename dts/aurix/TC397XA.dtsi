@@ -4,4 +4,20 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include "skeleton.dtsi"
+/dts-v1/;
+
+#include "sample_controller.dtsi"
+
+/ {
+	model = "KIT_A2G_TC397XA_3V3_TFT";
+	compatible = "aurix-sample-controller";
+
+	chosen {
+		zephyr,sram = &sram0;
+	};
+};
+
+&cpu0 {
+	clock-frequency = <10000000>;
+};
+

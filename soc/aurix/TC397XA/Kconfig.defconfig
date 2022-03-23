@@ -1,2 +1,8 @@
 config SOC
 	default "TC397XA"
+	
+config AURIX_TIMER
+	default y
+	
+config SERIAL_AURIX
+	default y

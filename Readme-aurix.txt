@@ -3,29 +3,33 @@ Readme aurix branch - board KIT_A2G_TC397XA_3V3_TFT
 Currently the aurix-board-variant is not building properly.
 A method to catch the error would be recreating (mirroring) a working board, to have a working startpoint.
 
-How to build when all is set up correctly:
+How to build as far as possible right now, when all is set up correctly (add --pristine for rebuilds):
 set ZEPHYR_TOOLCHAIN_VARIANT=tricore
 west build -p auto -b KIT_A2G_TC397XA_3V3_TFT samples/hello_world
 
 Current build error:
 Currently the build of the aurix-branch with the board KIT_A2G_TC397XA_3V3_TFT stops at the error:
 [92/95] Generating dev_handles.c
-FAILED: zephyr/dev_handles.c C:/Users/nosna/zephyrproject/zephyr/build/zephyr/dev_handles.c
-cmd.exe /C "cd /D C:\Users\nosna\zephyrproject\zephyr\build\zephyr && C:\Python310\python.exe C:/Users/nosna/zephyrproject/zephyr/scripts/gen_handles.py --output-source dev_handles.c --kernel C:/Users/nosna/zephyrproject/zephyr/build/zephyr/zephyr_pre0.elf --zephyr-base C:/Users/nosna/zephyrproject/zephyr --start-symbol __device_start"
+FAILED: zephyr/dev_handles.c C:/Users/USER/zephyrproject/zephyr/build/zephyr/dev_handles.c
+cmd.exe /C "cd /D C:\Users\USER\zephyrproject\zephyr\build\zephyr && C:\Python310\python.exe C:/Users/USER/zephyrproject/zephyr/scripts/gen_handles.py --output-source dev_handles.c --kernel C:/Users/USER/zephyrproject/zephyr/build/zephyr/zephyr_pre0.elf --zephyr-base C:/Users/USER/zephyrproject/zephyr --start-symbol __device_start"
 Traceback (most recent call last):
-  File "C:\Users\nosna\zephyrproject\zephyr\scripts\gen_handles.py", line 372, in <module>
+  File "C:\Users\USER\zephyrproject\zephyr\scripts\gen_handles.py", line 372, in <module>
     main()
-  File "C:\Users\nosna\zephyrproject\zephyr\scripts\gen_handles.py", line 220, in main
+  File "C:\Users\USER\zephyrproject\zephyr\scripts\gen_handles.py", line 220, in main
     assert len(devices) == len(handles), 'mismatch devices and handles'
 AssertionError: mismatch devices and handles
 ninja: build stopped: subcommand failed.
-FATAL ERROR: command exited with status 1: 'C:\Program Files\CMake\bin\cmake.EXE' --build 'C:\Users\nosna\zephyrproject\zephyr\build'
+FATAL ERROR: command exited with status 1: 'C:\Program Files\CMake\bin\cmake.EXE' --build 'C:\Users\USER\zephyrproject\zephyr\build'
 
 Prerequisities:
 Hightec Free Tricore compiler (Free TriCore™ Entry Tool Chain - HighTec EDV-Systeme GmbH) - https://free-entry-toolchain.hightec-rt.com/
+Hightec Free Tricore compiler license file in C:\HighTec\licenses
+
 Windows 10 Zephyr installation (follow zephyr guide online) - https://docs.zephyrproject.org/latest/getting_started/index.html
 Always use the standard Windows Command Prompt (cmd.exe), do not use powershell or git bash etc.
 
+Nice to have:
+Arm-compiler for Windows, GNU Arm Embedded Toolchain (ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb)
 
 Extra files in the aurix branch (may be incomplete):
 ./arch/aurix

@@ -3,7 +3,7 @@
 
 / {
 	model = "Aurix-controller";
-	compatible = "aurix_controller";
+	compatible = "infineon,aurix-sample-controller";
 
 	chosen {
 		zephyr,sram = &sram0;

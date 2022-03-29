@@ -23,12 +23,12 @@
 		compatible = "mmio-sram";
 		reg = <0x60000000 0x4000000>;
 	};
-
+/*
 	soc {
 		#address-cells = <1>;
 		#size-cells = <1>;
 		compatible = "simple-bus";
 		ranges;
 
-	};
+	};*/
 };
